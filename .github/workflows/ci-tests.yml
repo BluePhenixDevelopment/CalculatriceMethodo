@@ -2,27 +2,27 @@ name: Run Unit Tests
 
 on:
   push:
-    branches:
-      - master  # La branche principale (si tu utilises une autre branche, modifie-la)
+    branches: [ main ]
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest  # Tu peux aussi utiliser windows-latest ou macos-latest
+    runs-on: ubuntu-latest  # Ou windows-latest, macos-latest
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3  # Action pour récupérer ton code
+      uses: actions/checkout@v3
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '8.0.x'  # Spécifie la version de .NET (assure-toi que c'est la bonne version)
+        dotnet-version: '8.0.x'
 
     - name: Restore dependencies
-      run: dotnet restore ./CalculatriceMethodo.sln  # Restaurer les dépendances pour la solution entière
+      run: dotnet restore
 
-    - name: Build
-      run: dotnet build --no-restore ./CalculatriceMethodo.sln  # Compiler la solution
+    # Pas besoin de 'dotnet build' si tu veux juste exécuter les tests
+    # - name: Build
+    #   run: dotnet build --no-restore
 
     - name: Run tests
-      run: dotnet test --no-build --verbosity normal ./CalculatriceMethodo.sln  # Exécuter les tests
+      run: dotnet test --no-build --verbosity normal
