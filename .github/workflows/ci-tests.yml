@@ -3,23 +3,26 @@ name: Run Unit Tests
 on:
   push:
     branches:
-      - master  # Déclenchement de l'action lors des push sur la branche master
+      - master  # Le workflow se déclenche lors de chaque push sur la branche master
 
 jobs:
   test:
-    runs-on: ubuntu-latest  # Environnement d'exécution sous Ubuntu
-    
+    runs-on: ubuntu-latest  # Le workflow s'exécute sur un environnement Ubuntu
+
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3  # Récupérer le code depuis GitHub
-    
+      uses: actions/checkout@v3  # Récupère le code source depuis le repository
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '8.0.x'  # Utilise la version .NET que tu utilises
-    
+        dotnet-version: '8.0.x'  # Remplace par ta version de .NET si nécessaire
+
     - name: Restore dependencies
-      run: dotnet restore  # Restaurer les dépendances
-    
+      run: dotnet restore  # Restaure les dépendances .NET
+
+    - name: Build
+      run: dotnet build --configuration Release  # Effectue un build (reconstruction du projet)
+
     - name: Run tests
-      run: dotnet test --no-build --verbosity normal  # Exécuter les tests unitaires
+      run: dotnet test --configuration Release --verbosity normal  # Lance les tests unitaires
