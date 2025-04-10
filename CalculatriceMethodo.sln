@@ -5,7 +5,7 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculatriceMethodo", "CalculatriceMethodo.csproj", "{E8265C84-9046-43C3-9C3E-499116FE0C9A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestsUnitaire", "..\TestsUnitaire\TestsUnitaire.csproj", "{088390ED-2BEE-4DC2-8D95-27676D5B4F7A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestsUnitaire", "TestsUnitaire/TestsUnitaire.csproj", "{088390ED-2BEE-4DC2-8D95-27676D5B4F7A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
