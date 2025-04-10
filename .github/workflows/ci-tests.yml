@@ -2,11 +2,12 @@ name: Run Unit Tests
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main  # Assure-toi que ta branche s'appelle 'main', si elle s'appelle autrement, modifie ici
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest  # Ou windows-latest, macos-latest
+    runs-on: ubuntu-latest  # Tu peux changer cela en 'windows-latest' ou 'macos-latest' si nécessaire
 
     steps:
     - name: Checkout code
@@ -15,14 +16,10 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '8.0.x'
+        dotnet-version: '8.0.x'  # Choisis la version .NET que tu utilises (ex: 8.0.x)
 
     - name: Restore dependencies
       run: dotnet restore
-
-    # Pas besoin de 'dotnet build' si tu veux juste exécuter les tests
-    # - name: Build
-    #   run: dotnet build --no-restore
 
     - name: Run tests
       run: dotnet test --no-build --verbosity normal
