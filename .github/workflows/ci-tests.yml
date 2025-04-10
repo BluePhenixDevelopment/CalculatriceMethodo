@@ -3,11 +3,11 @@ name: Run Unit Tests
 on:
   push:
     branches:
-      - master  # Remplace 'main' par 'master'
+      - master  # Déclenchement de l'action lors des push sur la branche master
 
 jobs:
   test:
-    runs-on: ubuntu-latest  # Utilisation d'Ubuntu pour l'environnement d'exécution
+    runs-on: ubuntu-latest  # Environnement d'exécution sous Ubuntu
     
     steps:
     - name: Checkout code
@@ -16,7 +16,10 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '8.0.x'  # Version .NET que tu utilises
+        dotnet-version: '8.0.x'  # Utilise la version .NET que tu utilises
     
     - name: Restore dependencies
-      run
+      run: dotnet restore  # Restaurer les dépendances
+    
+    - name: Run tests
+      run: dotnet test --no-build --verbosity normal  # Exécuter les tests unitaires
